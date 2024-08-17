@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Media</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+      input,
+      textarea {
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      button {
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .response {
+        margin-top: 20px;
+        color:white;
+        border: 2px solid blue;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Upload Media</h1>
+      <form id="uploadForm">
+        <input type="file" id="media" name="media" accept="image/*" required />
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Username"
+          required
+        />
+        <textarea
+          id="content"
+          name="content"
+          placeholder="Content"
+          rows="4"
+          required
+        ></textarea>
+        <button type="submit">Upload Post</button>
+      </form>
+      <div class="response" id="response"></div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
