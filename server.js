@@ -76,6 +76,10 @@ app.use(express.urlencoded({ extended: true }));
     }
   });
 
+  app.get("/test", (req, res) => {
+  res.json({ message: "Backend is working!" });
+});
+
   app.get("/post/:id", async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
