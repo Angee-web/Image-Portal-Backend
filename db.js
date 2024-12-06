@@ -1,13 +1,20 @@
-const dotenv = require("dotenv");
-// import mongoose 7
-const mongoose = require("mongoose");
-dotenv.config();
+const mongoose = require('mongoose');
 
-// connect to the atlas database with the connection string 8
-mongoose.connect(process.env.MONGODB_URI);
+const connectDB = async () => {
+    try {
+        const uri = process.env.MONGODB_CONNECTION_STRING;
+        if (!uri) {
+            throw new Error('MongoDB connection string is not defined');
+        }
+        await mongoose.connect(uri, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log('MongoDB connected successfully!');
+    } catch (err) {
+        console.error('Error connecting to MongoDB:', err.message);
+        process.exit(1); // Exit process with failure
+    }
+};
 
-// assign the connection string to db 9
-const db = mongoose.connection;
-
-// export the db variable 10
-module.exports = db;
+module.exports = connectDB;
